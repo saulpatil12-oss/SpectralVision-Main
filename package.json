@@ -1,7 +1,7 @@
 {
-  "name": "nasa-spaceapp-explorer",
+  "name": "Spectral-Vision",
   "version": "1.0.0",
-  "description": "Complete NASA SpaceApp - Earth, Moon & Mars Explorer with multiple layers and annotations",
+  "description": "Complete Online space observatory for school students- Earth, Moon & Mars Explorer with multiple layers and annotations",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -31,6 +31,7 @@
     "leaflet",
     "annotations"
   ],
-  "author": "NASA SpaceApp Team",
+  "author": "Spectral Vision Team",
   "license": "MIT"
+
 }
