@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satellite Reception Guide – GK-2A | Spectral Vision</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Your existing CSS -->
+  
+  <style>
+    :root {
+      --bg: #0a0a1a;
+      --card: rgba(20,20,40,0.95);
+      --text: #e6eef6;
+      --muted: #94a3b8;
+      --glass-border: rgba(255,255,255,0.1);
+      --shadow: 0 20px 60px rgba(2,6,23,0.8);
+      --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height:1.6; background: var(--bg); color: var(--text); overflow-y: auto; padding: 20px; }
+    h1, h2 { text-align: center; margin: 1em 0; }
+    h2 { border-bottom: 2px solid #ccc; padding-bottom: 0.3em; }
+    .container { max-width: 1000px; margin: auto; }
+    ul { padding-left: 1.2em; margin-bottom: 1em; }
+    li { margin-bottom: 0.5em; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background-color: #222; }
+
+    /* Placeholder for example images at the end */
+    .diagram { display:block; max-width:100%; margin:20px auto; height:200px; background: rgba(255,255,255,0.05); border: 1px dashed var(--muted); text-align:center; line-height:200px; color: var(--muted); font-size:0.9rem; }
+
+    /* Floating Home Button at Top Left */
+    #homeBtn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, #0099ff, #6c5ce7);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 9999;
+    }
+    #homeBtn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 80px rgba(255,255,255,0.1);
+    }
+    #homeBtn .icon { font-size:1.2rem; }
+
+    footer { text-align: center; font-size: 0.9em; margin: 40px 0 20px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Satellite Reception Guide – GK-2A</h1>
+    <p style="text-align:center;">Receive GK-2A meteorological imagery at home using SDR or dish antennas</p>
+
+    <h2>A) Introduction to GK-2A</h2>
+    <ul>
+      <li><strong>Satellite:</strong> GK-2A, a geostationary meteorological satellite over Asia.</li>
+      <li><strong>Transmissions:</strong> HRIT (High-Rate Information Transmission) and LRIT (Low-Rate Information Transmission).</li>
+      <li><strong>Home Reception:</strong> Signal in L-band (1691.0–1692.5 MHz) is receivable with consumer SDRs and small antennas due to strong GEO broadcast power.</li>
+    </ul>
+
+    <h2>B) Required Equipment</h2>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Purpose</th><th>Approx. Price in India (₹)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>RTL-SDR Dongle</td><td>Receives RF signals from satellite</td><td>3,000 – 5,000</td></tr>
+        <tr><td>LNA (Low-Noise Amplifier)</td><td>Boosts weak satellite signals</td><td>1,500 – 2,500</td></tr>
+        <tr><td>L-band Filter</td><td>Removes out-of-band interference</td><td>800 – 1,500</td></tr>
+        <tr><td>Bi-pole / Turnstile Antenna</td><td>Captures L-band signals horizontally & vertically</td><td>2,000 – 3,500</td></tr>
+        <tr><td>Dish Antenna + LNB</td><td>High-gain alternative to capture LRIT/HRIT signals</td><td>6,000 – 10,000</td></tr>
+        <tr><td>Cables & Adapters</td><td>Connect all devices, maintain signal quality</td><td>500 – 1,000</td></tr>
+      </tbody>
+    </table>
+
+    <h2>C) Setup Method 1: RTL-SDR + Bi-pole Antenna</h2>
+    <ul>
+      <li><strong>Connection Chain:</strong> Antenna → LNA → L-band Filter → RTL-SDR → PC</li>
+      <li><strong>Positioning:</strong> Place antenna outdoors with clear line of sight to GEO satellite at ~128°E longitude.</li>
+      <li><strong>Typical SNR:</strong> 10–18 dB indoors, 15–25 dB outdoors</li>
+    </ul>
+
+    <h2>D) Setup Method 2: Dish Antenna + LNB</h2>
+    <ul>
+      <li><strong>Feed Mount:</strong> LNB should face the dish focus precisely.</li>
+      <li><strong>Dish Alignment:</strong> Azimuth: ~128°E, Elevation: 30–40° depending on location in India.</li>
+      <li><strong>Suggested Dish Size:</strong> 60–90 cm for most Indian cities</li>
+    </ul>
+
+    <h2>E) Software Setup</h2>
+    <ul>
+      <li><strong>SDR# Settings:</strong> Frequency: 1692.14 MHz, Sample Rate: 2.048 MSPS, Gain: Auto, Bandwidth: 2 MHz</li>
+      <li><strong>Decoding:</strong> SatDump or LeanHRIT for LRIT/HRIT extraction</li>
+      <li><strong>Post-processing:</strong> Use XRIT-Decompress to reconstruct full images</li>
+    </ul>
+
+    <h2>F) Troubleshooting</h2>
+    <ul>
+      <li>Check cable loss, antenna orientation, and LNA connection</li>
+      <li>Verify dish azimuth & elevation</li>
+      <li>Move setup outdoors if interference occurs</li>
+    </ul>
+
+    <h2>G) Example Images</h2>
+    <img src "image3.png">
+    <img src "image2.png">
+    <img src "image1.png">
+
+    <footer>Built by Team Spectral Vision</footer>
+  </div>
+
+  <!-- Floating Home Button at top-left -->
+  <button id="homeBtn" onclick="window.location.href='index.html'">
+    <span class="icon">🏠</span>
+    <span class="label">Home</span>
+  </button>
+
+</body>
+</html>

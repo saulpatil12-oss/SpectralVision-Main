@@ -7,11 +7,20 @@
   
   <title>Spectral Vision</title>
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
-        crossorigin=""/>
- 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
   <link rel="stylesheet" href="style.css">
+
+  
+  <style>
+    /* Only fix grid, NOTHING about buttons */
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="cosmic-bg"></div>
@@ -19,9 +28,10 @@
   <div id="landing">
     <div class="landing-card">
       <div class="hero">
-        <h1>An App Specially created by Students for Students</h1>
-        <p>Embark on an interplanetary journey! Explore high-resolution imagery of Earth, Moon, and Mars. </p>
-        
+        <h1>Spectral Vision</h1>
+        <p>Embark on an interplanetary journey! Explore high-resolution imagery of Earth, Moon, Mars and Global Warming.</p>
+
+        <!-- Fixed 2x2 Grid Layout -->
         <div class="cta-grid">
           <button class="btn earth" id="btn-earth">
             <span class="icon">🌍</span>
@@ -46,7 +56,18 @@
               <span class="sub">Mars Trek • Viking Data</span>
             </div>
           </button>
-        </div>
+
+          <button class="btn gb" id="btn-gb"
+        onclick="window.location.href='satellitereception.html'">
+    <span class="icon">📡</span>
+    <div>
+        <span class="label">Home Satellite Receiver Guide</span>
+        <span class="sub">Receive NASA/NOAA Data Yourself</span>
+    </div>
+</button>
+
+
+</div> <!-- end of cta-grid -->
 
         <div style="margin-top: 24px; color: #94a3b8; font-size: 14px;">
           <strong>Quick Tips:</strong> Press H to toggle sidebar • Right-click to quick-annotate • Home to return
@@ -65,6 +86,14 @@
         </div>
         
         <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-size: 12px;">
+          <strong>Built by Team Spectral Vision</strong><br>
+          Powered by NASA GIBS, LRO, and Mars Trek APIs
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-size: 12px;">
           <strong>Built by Team Spectral Vision</strong><br>
           Powered by NASA GIBS, LRO, and Mars Trek APIs
         </div>
@@ -174,14 +203,7 @@
     </div>
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
-          crossorigin=""></script>
-          
-  <script src="/socket.io/socket.io.js"></script>
-
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="script.js"></script>
 </body>
-
 </html>
-
